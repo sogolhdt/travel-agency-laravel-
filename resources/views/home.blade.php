@@ -15,12 +15,13 @@
                 @foreach ($countries as $country)
                     <?php $i = $i + 1; ?>
                     <div id="top-banner-{{ $i }}" class="banner"
-                        style="background-image: url('{{ asset('assets/images/' . $country->image . '') }}')">
+                        style="background-image: url('{{ asset('assets/images/' . $country->image) }}')">
                         <div class="banner-inner-wrapper header-text">
                             <div class="main-caption">
                                 <h2>Take a Glimpse Into The Beautiful Country Of:</h2>
                                 <h1>{{ $country->name }}</h1>
-                                <div class="border-button"><a href="about.html">Go There</a></div>
+                                <div class="border-button"><a href="{{ route('traveling.about', $country->id) }}">Go
+                                        There</a></div>
                             </div>
                             <div class="container">
                                 <div class="row">
