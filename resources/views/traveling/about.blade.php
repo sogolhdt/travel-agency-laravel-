@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- ***** Main Banner Area Start ***** -->
-    <div class="about-main-content">
+    <div class="about-main-content" style="margin-top: -25px;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -10,7 +10,7 @@
                         <div class="blur-bg"></div>
                         <h4>EXPLORE OUR COUNTRY</h4>
                         <div class="line-dec"></div>
-                        <h2>Welcome To Caribbean</h2>
+                        <h2>Welcome To {{ $countryName }}</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt uttersi
                             labore et dolore magna aliqua is ipsum suspendisse ultrices gravida</p>
                         <div class="main-button">
@@ -28,58 +28,18 @@
                 <div class="slider-content">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h2>Caribbean’s <em>Cities &amp; Towns</em></h2>
+                            <h2 style="color: black;">{{ $countryName }}’s <em>Cities &amp; Towns</em></h2>
                         </div>
                         <div class="col-lg-12">
                             <div class="owl-cites-town owl-carousel">
-                                <div class="item">
-                                    <div class="thumb">
-                                        <img src="assets/images/cities-01.jpg" alt="">
-                                        <h4>Havana</h4>
+                                @foreach ($cities as $city)
+                                    <div class="item">
+                                        <div class="thumb">
+                                            <img src="{{ asset('assets/images/cities-01.jpg') }}" alt="">
+                                            <h4>{{ $city->name }}</h4>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="item">
-                                    <div class="thumb">
-                                        <img src="assets/images/cities-02.jpg" alt="">
-                                        <h4>Kingston</h4>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="thumb">
-                                        <img src="assets/images/cities-03.jpg" alt="">
-                                        <h4>George Town</h4>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="thumb">
-                                        <img src="assets/images/cities-04.jpg" alt="">
-                                        <h4>Santo Domingo</h4>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="thumb">
-                                        <img src="assets/images/cities-01.jpg" alt="">
-                                        <h4>Havana</h4>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="thumb">
-                                        <img src="assets/images/cities-02.jpg" alt="">
-                                        <h4>Kingston</h4>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="thumb">
-                                        <img src="assets/images/cities-03.jpg" alt="">
-                                        <h4>George Town</h4>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="thumb">
-                                        <img src="assets/images/cities-04.jpg" alt="">
-                                        <h4>Santo Domingo</h4>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
