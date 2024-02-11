@@ -1,11 +1,23 @@
 <?php
 
-namespace App\Models\country;
+namespace App\Models\Country;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class country extends Model
+class Country extends Model
 {
-    use HasFactory;
+    // use HasFactoriay; 
+ 
+    protected $table = "countries";
+    protected $fillables =[
+        'name',
+        'population',
+        'territory',
+        'avg_price',
+        'image',
+        'description',
+        'continent',
+    ];
+    public $timestamps = true; 
 }
