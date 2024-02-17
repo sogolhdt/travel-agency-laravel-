@@ -21,3 +21,11 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/traveling/about/{id}', [App\Http\Controllers\Traveling\TravelingController::class, 'about'])->name('traveling.about');
+
+// route to get the reservation view page  
+Route::get('/traveling/reservation/{cityId}', [App\Http\Controllers\Traveling\TravelingController::class, 'reservation'])->name('reservation');
+Route::post('/traveling/reservation', [App\Http\Controllers\Traveling\TravelingController::class, 'makeReservation'])->name('make.reservation');
+
+// deals 
+Route::get('/deals', [App\Http\Controllers\Deals\DealsController::class, 'dealsView'])->name('deals');
+Route::post('/deals/search', [App\Http\Controllers\Deals\DealsController::class, 'search'])->name('search-deals');
