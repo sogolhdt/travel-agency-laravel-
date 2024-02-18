@@ -29,3 +29,6 @@ Route::post('/traveling/reservation', [App\Http\Controllers\Traveling\TravelingC
 // deals 
 Route::get('/deals', [App\Http\Controllers\Deals\DealsController::class, 'dealsView'])->name('deals');
 Route::post('/deals/search', [App\Http\Controllers\Deals\DealsController::class, 'search'])->name('search-deals');
+
+// profile
+Route::get('/user/bookings', [App\Http\Controllers\User\UserController::class, 'bookingsList'])->name('my-bookings');

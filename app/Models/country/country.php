@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Country extends Model
 {
     // use HasFactoriay; 
- 
+
     protected $table = "countries";
-    protected $fillables =[
+    protected $fillables = [
         'name',
         'population',
         'territory',
@@ -19,5 +19,24 @@ class Country extends Model
         'description',
         'continent',
     ];
-    public $timestamps = true; 
+    public $timestamps = true;
+
+    public static function getCountriesNames()
+    {
+
+        $countries = [];
+
+        // get countries names list
+        $countriesDb = Country::pluck('name', 'id');
+        if ($countriesDb != null) {
+            foreach ($countriesDb as $id => $country) {
+                $countries[] = [
+                    'id' => $id,
+                    'name' => $country
+                ];
+            }
+        }
+        return $countries;
+
+    }
 }

@@ -4,9 +4,9 @@
     <div class="page-heading">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
-                    <h4>Discover Our Weekly Offers</h4>
-                    <h2>Amazing Prices &amp; More</h2>
+                <div class="col-lg-6">
+
+                    <h2>My Bookings</h2>
                 </div>
             </div>
         </div>
@@ -16,52 +16,46 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <form id="search-form" name="gs" method="post" role="search" action="{{ route('search-deals') }}">
-                        @csrf
-                        <div class="row">
-                            <div class="col-lg-2">
-                                <h4>Sort Deals By:</h4>
-                            </div>
-                            <div class="col-lg-4">
-                                <fieldset>
-                                    <select name="country_id" class="form-select" aria-label="Default select example"
-                                        id="chooseLocation" onChange="this.form.click()">
-                                        <option selected>Destinations</option>
-
-                                        @foreach ($countries as $country)
-                                            <option value="{{ $country['id'] }}">{{ $country['name'] }}</option>
-                                        @endforeach
-                                        {{-- <option type="checkbox" name="option1" valsue="Italy">Italy</option> --}}
-
-                                    </select>
-                                </fieldset>
-                            </div>
-                            <div class="col-lg-4">
-                                <fieldset>
-                                    <select name="price" class="form-select" aria-label="Default select example"
-                                        id="choosePrice" onChange="this.form.click()">
-                                        <option selected>Price Range</option>
-                                        <option value="100.250">$100 - $250</option>
-                                        <option value="250.500">$250 - $500</option>
-                                        <option value="500.1000">$500 - $1,000</option>
-                                        <option value="1000.2000">$1,000 - $2,500</option>
-                                        <option value="2500.">$2,500+</option>
-                                    </select>
-                                </fieldset>
-                            </div>
-                            <div class="col-lg-2">
-                                <fieldset>
-                                    <button class="border-button">Search Results</button>
-                                </fieldset>
-                            </div>
-                        </div>
-                    </form>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">no</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Phone number</th>
+                                <th scope="col">Number of guests</th>
+                                <th scope="col">Check in date</th>
+                                <th scope="col">Check out date</th>
+                                <th scope="col">Destination</th>
+                                <th scope="col">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($bookings as $item)
+                                <tr>
+                                    <th scope="row">{{ $item->id }}</th>
+                                    <td>{{ $item->customer_name }}</td>
+                                    <td>{{ $item->customer_phone }}</td>
+                                    <td>{{ $item->num_guests }}</td>
+                                    <td>{{ $item->check_in_date }}</td>
+                                    <td>{{ $item->check_out_date }}</td>
+                                    <td>{{ $item->city }}</td>
+                                    <td>{{ $item->status }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
+            <div class="pagination">
+                {{ $bookings->links('vendor.pagination.custom') }}
+            </div>
+
         </div>
+
+
     </div>
 
-    <div class="amazing-deals">
+    {{-- <div class="amazing-deals">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 offset-lg-3">
@@ -111,5 +105,5 @@
 
             </div>
         </div>
-    </div>
+    </div> --}}
 @endsection
