@@ -16,9 +16,11 @@ class UserController extends Controller
             return;
         }
         $userId = Auth::user()->id;
-        $bookings = Reservation::select('reservations.*', 'cities.name as city')->join('cities', 'Reservations.city_id', '=', 'cities.id')
-            ->where("Reservations.user_id", $userId)->paginate(10);
-        // dd($bookings->links());
+        $bookings = Reservation::select('reservations.*', 'cities.name as city')
+            ->join('cities', 'Reservations.city_id', '=', 'cities.id')
+            ->where("Reservations.user_id", $userId)
+            ->paginate(4);
+
         return view("user.bookings", compact("bookings"));
     }
 }

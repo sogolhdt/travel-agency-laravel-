@@ -46,15 +46,20 @@
                     </table>
                 </div>
             </div>
-            <div class="pagination">
-                {{ $bookings->links('vendor.pagination.custom') }}
-            </div>
 
+        </div>
+        <div class="pagination">
+            {{ $bookings->links('vendor.pagination.custom') }}
         </div>
 
 
     </div>
-
+    <style>
+        .pagination {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
     {{-- <div class="amazing-deals">
         <div class="container">
             <div class="row">
