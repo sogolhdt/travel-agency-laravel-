@@ -14,7 +14,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     /**
@@ -24,8 +24,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $countries = Country::select()->orderBy('id','asc')->take(4)->get();
+        $countries = Country::select()->orderBy('id', 'asc')->take(4)->get();
 
-        return view('home',compact('countries'));
+        return view('home', compact('countries'));
     }
 }
