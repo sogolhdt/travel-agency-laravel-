@@ -42,6 +42,11 @@ Route::get('/user/bookings', [App\Http\Controllers\User\UserController::class, '
 // ::Admin::
 Route::group(['prefix' => 'admin'], function () {
 
+    Route::get('/', [App\Http\Controllers\Admin\AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/admins', [App\Http\Controllers\Admin\AdminController::class, 'admins'])->name('admins');
+    Route::get('/admin/create', [App\Http\Controllers\Admin\AdminController::class, 'createAdminView'])->name('admin.create.view');
+    Route::post('/admin/create', [App\Http\Controllers\Admin\AdminController::class, 'createAdmin'])->name('admin.create');
     Route::get('/login', [App\Http\Controllers\Admin\AdminController::class, 'loginView'])->name('admin.login.view');
+    Route::post('/login', [App\Http\Controllers\Admin\AdminController::class, 'login'])->name('admin.login');
 
 });

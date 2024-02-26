@@ -7,7 +7,7 @@
     <title>Admin Panel</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../styles/style.css" rel="stylesheet">
+    <link href="{{ asset('assets/styles/style.css') }}" rel="stylesheet">
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </head>
@@ -16,7 +16,7 @@
     <div id="wrapper">
         <nav class="navbar header-top fixed-top navbar-expand-lg  navbar-dark bg-dark">
             <div class="container">
-                <a class="navbar-brand" href="../index.html">LOGO</a>
+                <a class="navbar-brand" href="#">LOGO</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
                     aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -25,34 +25,38 @@
                 <div class="collapse navbar-collapse" id="navbarText">
                     <ul class="navbar-nav side-nav">
                         <li class="nav-item">
-                            <a class="nav-link" style="margin-left: 20px;" href="../index.html">Home
+                            <a class="nav-link" style="margin-left: 20px;" href="index.html">Home
                                 <span class="sr-only">(current)</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="admins/admins.html" style="margin-left: 20px;">Admins</a>
+                            <a class="nav-link" href="{{ route('admins') }}" style="margin-left: 20px;">Admins</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../categories-admins/show-categories.html"
-                                style="margin-left: 20px;">Categories</a>
+                            <a class="nav-link" href=""
+                                style="margin-left: 20px;">Countries</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../posts-admins/show-posts.html"
-                                style="margin-left: 20px;">Posts</a>
+                            <a class="nav-link" href="cities-admins/show-cities.html"
+                                style="margin-left: 20px;">Cities</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../bookings-admins/show-bookings.html"
+                            <a class="nav-link" href="bookings-admins/show-bookings.html"
                                 style="margin-left: 20px;">Bookings</a>
                         </li>
                     </ul>
                     <ul class="navbar-nav ml-md-auto d-md-flex">
                         <li class="nav-item">
-                            <a class="nav-link" href="../index.html">Home
+                            <a class="nav-link" href="index.html">Home
                                 <span class="sr-only">(current)</span>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="admins/login-admins.html">login
+                            </a>
+                        </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            <a class="nav-link  dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 username
                             </a>
@@ -66,7 +70,14 @@
                 </div>
             </div>
         </nav>
-    </div>
+        <div class="container-fluid">
+
+        </div>
+        <main class="py-4">
+            @yield('content')
+        </main>
+        <script type="text/javascript"></script>
+
 </body>
 
 </html>
