@@ -37,16 +37,19 @@ Route::group(['prefix' => 'deals'], function () {
 });
 // profile
 Route::get('/user/bookings', [App\Http\Controllers\User\UserController::class, 'bookingsList'])->name('my-bookings');
+Route::get('/user/test', [App\Http\Controllers\User\UserController::class, 'test'])->name('test');
 
 
 // ::Admin::
-Route::group(['prefix' => 'admin'], function () {
+Route::get('admin/login', [App\Http\Controllers\Admin\AdminController::class, 'loginView'])->name('admin.login.view')->middleware('check.for.auth');
+
+Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
 
     Route::get('/', [App\Http\Controllers\Admin\AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('/admins', [App\Http\Controllers\Admin\AdminController::class, 'admins'])->name('admins');
-    Route::get('/admin/create', [App\Http\Controllers\Admin\AdminController::class, 'createAdminView'])->name('admin.create.view');
-    Route::post('/admin/create', [App\Http\Controllers\Admin\AdminController::class, 'createAdmin'])->name('admin.create');
-    Route::get('/login', [App\Http\Controllers\Admin\AdminController::class, 'loginView'])->name('admin.login.view');
+    Route::get('/create', [App\Http\Controllers\Admin\AdminController::class, 'createAdminView'])->name('admin.create.view');
+    Route::post('/create', [App\Http\Controllers\Admin\AdminController::class, 'createAdmin'])->name('admin.create');
     Route::post('/login', [App\Http\Controllers\Admin\AdminController::class, 'login'])->name('admin.login');
 
 });
+

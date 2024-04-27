@@ -8,7 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="{{ asset('assets/styles/style.css') }}" rel="stylesheet">
+    {{-- <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet"> --}}
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    {{-- <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script> --}}
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </head>
 
@@ -33,8 +35,7 @@
                             <a class="nav-link" href="{{ route('admins') }}" style="margin-left: 20px;">Admins</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href=""
-                                style="margin-left: 20px;">Countries</a>
+                            <a class="nav-link" href="" style="margin-left: 20px;">Countries</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="cities-admins/show-cities.html"
@@ -51,20 +52,29 @@
                                 <span class="sr-only">(current)</span>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="admins/login-admins.html">login
-                            </a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link  dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                username
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Logout</a>
-
-                        </li>
-
+                        @auth('admin')
+                            <li class="nav-item dropdown">
+                                <a class="nav-link  dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{ Auth::guard('admin')->user()->name }}
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item text-black" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @else
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('admin.login.view') }}">login
+                                </a>
+                            </li>
+                        @endauth
 
                     </ul>
                 </div>
@@ -76,8 +86,29 @@
         <main class="py-4">
             @yield('content')
         </main>
-        <script type="text/javascript"></script>
+        <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
+        <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
 
+        <script src="{{ asset('assets/js/isotope.min.js') }}"></script>
+        <script src="{{ asset('assets/js/owl-carousel.js') }}"></script>
+        <script src="{{ asset('assets/js/wow.js') }}"></script>
+        <script src="{{ asset('assets/js/tabs.js') }}"></script>
+        <script src="{{ asset('assets/js/popup.js') }}"></script>
+        <script src="{{ asset('assets/js/custom.js') }}"></script>
+        <script>
+            function bannerSwitcher() {
+                next = $('.sec-1-input').filter(':checked').next('.sec-1-input');
+                if (next.length) next.prop('checked', true);
+                else $('.sec-1-input').first().prop('checked', true);
+            }
+
+            var bannerTimer = setInterval(bannerSwitcher, 5000);
+
+            $('nav .controls label').click(function() {
+                clearInterval(bannerTimer);
+                bannerTimer = setInterval(bannerSwitcher, 5000)
+            });
+        </script>
 </body>
 
 </html>

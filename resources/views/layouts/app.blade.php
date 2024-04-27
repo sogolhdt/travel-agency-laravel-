@@ -55,7 +55,7 @@
                             <ul class="nav">
                                 <li><a href="index.html" class="active">Home</a></li>
                                 <li><a href="about.html">About</a></li>
-                                <li><a href="deals.html">Deals</a></li>
+                                <li><a href="{{ route('deals') }}">Deals</a></li>
                                 @guest
                                     @if (Route::has('login'))
                                         <li><a href="login.html">Login</a></li>

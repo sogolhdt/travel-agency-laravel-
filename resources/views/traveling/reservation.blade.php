@@ -96,7 +96,7 @@
                             <div class="col-lg-6">
                                 <fieldset>
                                     <input type="hidden" name="city_id" required value="{{ $cityId }}">
-                                    <input type="hidden" name="user_id"required value="{{ Auth::user()->id }}">
+                                    <input type="hidden" name="user_id" required value="{{ Auth::user()->id }}">
                                 </fieldset>
                             </div>
 

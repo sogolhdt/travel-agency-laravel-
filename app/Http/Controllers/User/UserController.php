@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Models\Reservation\Reservation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Auth;
 
 class UserController extends Controller
@@ -22,5 +23,11 @@ class UserController extends Controller
             ->paginate(4);
 
         return view("user.bookings", compact("bookings"));
+    }
+    public function test(Request $request)
+    {
+
+        $pass = Hash::make(1234);
+        return $pass;
     }
 }

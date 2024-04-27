@@ -97,7 +97,7 @@
                                             </div>
                                             <p>Lorem ipsum dolor sit amet dire consectetur adipiscing elit.</p>
                                             <div class="main-button">
-                                                <a href="reservation.html">Make a Reservation</a>
+                                                <a href="{{ route('reservation', $city->id) }}">Make a Reservation</a>
                                             </div>
                                         </div>
                                     </div>
